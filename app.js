@@ -12,7 +12,10 @@ dotenv.config();
 
 const url = process.env.MONGODB_URL;
 
-mongoose.connect(url, {});
+mongoose
+  .connect(url, {})
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.log(err));
 
 //http request logger middleware
 app.use(morgan("dev"));
