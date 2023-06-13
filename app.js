@@ -3,16 +3,16 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
 const productRoutes = require("./api/routes/products");
 const orderRoutes = require("./api/routes/orders");
 
-const connectDB = (url) => {
-  mongoose
-    .connect(url)
-    .then(() => console.log("MongoDB connected"))
-    .catch((err) => console.log(err));
-};
+dotenv.config();
+
+const url = process.env.MONGODB_URL;
+
+mongoose.connect(url, {});
 
 //http request logger middleware
 app.use(morgan("dev"));
