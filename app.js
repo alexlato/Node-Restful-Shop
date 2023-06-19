@@ -16,6 +16,8 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
+mongoose.Promise = global.Promise;
+
 //http request logger middleware
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
